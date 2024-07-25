@@ -1,0 +1,35 @@
+{
+  "name": "ts-mocha-c8",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "author": "",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "npx tsc --build ./tsconfig.build.json",
+    "build:all": "npx tsc --build ./tsconfig.build.all.json",
+    "build:test": "npx tsc --build ./tsconfig.build.test.json",
+    "clean": "npx tsc --build --clean ./tsconfig.build.json && rm -rf dist",
+    "clean:all": "npx tsc --build --clean ./tsconfig.build.all.json && rm -rf dist",
+    "clean:test": "npx tsc --build --clean ./tsconfig.build.test.json && rm -rf dist/__tests__",
+    "converage": "npx c8 npm run test",
+    "converage:dist": "npx c8 npm run test:dist",
+    "rebuild": "npm run clean && npm run build",
+    "rebuild:all": "npm run build:test:clean && npm run build",
+    "test": "DOTENV_CONFIG_PATH=src/__tests__/env.test mocha \"src/__tests__/*.test.ts\" --config mocharc.src.jsonc",
+    "test:dist": "DOTENV_CONFIG_PATH=env.dist npx mocha \"dist/__tests__/*.test.js\" --config mocharc.dist.jsonc"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^20.2.5",
+    "c8": "^10.1.2",
+    "chai": "^5.1.1",
+    "dotenv": "^16.3.1",
+    "mocha": "^10.7.0",
+    "tsx": "^4.16.2",
+    "typescript": "^5.1.3"
+  }
+}
